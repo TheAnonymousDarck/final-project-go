@@ -18,6 +18,13 @@ func main() {
 	// Iniciar Gin
 	router := gin.Default()
 
+	//router.LoadHTMLGlob("cmd/templates/**/*")
+
+	router.Use(func(c *gin.Context) {
+		c.Set("db", database.DB)
+		c.Next()
+	})
+
 	// Definir las rutas
 	routes.SetupRoutes(router)
 

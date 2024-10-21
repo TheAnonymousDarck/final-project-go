@@ -2,6 +2,7 @@ package database
 
 import (
 	"github.com/TheAnonymousDarck/final-project-go/cmd/config"
+	"github.com/TheAnonymousDarck/final-project-go/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -17,4 +18,13 @@ func ConnectDatabase() {
 		log.Fatalf("Error al conectar a la base de datos: %v", err)
 	}
 	log.Println("Conectado a la base de datos MySQL")
+
+	migrateModels()
+}
+
+func migrateModels() {
+	err := DB.AutoMigrate(&models.Student{}, &models.Subject{}, &models.Grade{})
+	if err != nil {
+		log.Fatalf("Error al migrar la base de datos: %v", err)
+	}
 }
