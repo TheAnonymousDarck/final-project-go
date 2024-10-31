@@ -19,6 +19,4 @@ func SetupRoutes(router *gin.Engine) {
 	school_control.StudentRoutes(router)
 	school_control.SubjectRoutes(router)
 	school_control.GradeRoutes(router)
-
-	school_control.StudentHTMLRoutes(router)
 }

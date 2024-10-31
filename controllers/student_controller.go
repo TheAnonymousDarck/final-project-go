@@ -84,18 +84,3 @@ func GetStudent(c *gin.Context) {
 
 	c.JSON(http.StatusOK, student)
 }
-
-// GetAllStudentsHTML Renderizar todos los estudiantes en una página HTML
-func GetAllStudentsHTML(c *gin.Context) {
-	db := c.MustGet("db").(*gorm.DB)
-	students, err := services.GetAllStudents(db)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	// Renderizar el template con la lista de estudiantes
-	c.HTML(http.StatusOK, "students.html", gin.H{
-		"Students": students,
-	})
-}

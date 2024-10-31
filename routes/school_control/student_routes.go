@@ -15,10 +15,3 @@ func StudentRoutes(router *gin.Engine) {
 		studentRoutes.DELETE("/:student_id", controllers.DeleteStudent)
 	}
 }
-
-func StudentHTMLRoutes(router *gin.Engine) {
-	studentHtmlRoutes := router.Group("/api/students")
-	{
-		studentHtmlRoutes.GET("/students", controllers.GetAllStudentsHTML)
-	}
-}
