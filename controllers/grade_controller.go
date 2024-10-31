@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	// "fmt"
 	"net/http"
 	"strconv"
 
@@ -12,6 +13,7 @@ import (
 
 // CreateGradeHandler Maneja la creación de una calificación
 func CreateGradeHandler(c *gin.Context) {
+	// fmt.Errorf("Context: %d", c)
 	db := c.MustGet("db").(*gorm.DB)
 	var grade models.Grade
 	if err := c.ShouldBindJSON(&grade); err != nil {

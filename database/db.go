@@ -23,8 +23,20 @@ func ConnectDatabase() {
 }
 
 func migrateModels() {
-	err := DB.AutoMigrate(&models.Student{}, &models.Subject{}, &models.Grade{})
-	if err != nil {
-		log.Fatalf("Error al migrar la base de datos: %v", err)
-	}
+	if err := DB.AutoMigrate(&models.Student{}, &models.Subject{},&models.Grade{}  ); err != nil {
+        log.Fatalf("Error al migrar la base de datos: %v", err)
+    }
+	// err := DB.AutoMigrate(&models.Grade{},&models.Student{}, &models.Subject{} )
+	// err := db.AutoMigrate(&models.Student{})
+	// if err != nil {
+	// 	log.Fatalf("Error al migrar la base de datos: %v", err)
+	// }
+	// err := db.AutoMigrate(&models.Grade{})
+	// if err != nil {
+	// 	log.Fatalf("Error al migrar la base de datos: %v", err)
+	// }
+	// err := db.AutoMigrate(&models.Subject{})
+	// if err != nil {
+	// 	log.Fatalf("Error al migrar la base de datos: %v", err)
+	// }
 }

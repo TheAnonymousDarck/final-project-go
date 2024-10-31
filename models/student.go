@@ -1,8 +1,11 @@
 package models
 
 type Student struct {
-	StudentID int    `gorm:"primaryKey"`
-	Name      string `gorm:"size:255"`
-	Group     string `gorm:"size:50"`
-	Email     string `gorm:"size:100"`
+    StudentID int     `gorm:"primaryKey;autoIncrement"`
+    Name      string  
+    Group     string  
+    Email     string  
+
+    // Relación uno a muchos con Grade
+    // Grades []Grade `gorm:"foreignKey:StudentID"`
 }
